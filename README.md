@@ -71,7 +71,7 @@ chat-db
 
 - 此处我以我自己mac为例，mysql版本8.0.29  Sequel Ace 软件 
 
-  ![截屏2022-08-30 下午10.55.52](./pic/截屏2022-08-30 下午10.55.52.png)
+  ![image-1](./pic/image-1.png)
 
 此处import 导入数据表
 
@@ -199,7 +199,7 @@ https://www.lingshulian.com
 
 **页面一览**
 
-![截屏2022-09-01 下午12.24.29](./pic/截屏2022-09-01 下午12.24.29.png)
+![image-0](./pic/image-0.png)
 
 **说明**
 
