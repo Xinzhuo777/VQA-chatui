@@ -21,17 +21,6 @@
           </ul>
         </el-scrollbar>
       </el-popover>
-      <div class="ml-10px text-20px i-ep-picture-rounded !cursor-pointer">
-        <input
-          ref="referenceUpload"
-          class="opacity-0"
-          name="customerService"
-          type="file"
-          value=""
-          accept="image/*"
-          v-on:change="sendImage"
-        />
-      </div>
       <div class="ml-10px text-20px i-ep-video-camera !cursor-pointer">
         <input
           ref="referenceUploadVideo"
@@ -43,6 +32,20 @@
           v-on:change="sendVideo"
         />
       </div>
+        <el-upload
+        ref="uploadRef"
+        class="upload-demo"
+        action="https://run.mocky.io/v3/9d059bf9-4660-45f2-925d-ce80ad6c4d15"
+        :auto-upload="false"
+         >
+        <template #trigger>
+        <el-button type="primary">select file</el-button>
+        </template>
+
+    <el-button class="ml-10px" type="success" @click="submitUpload">
+      upload to server
+    </el-button>
+    </el-upload>
     </el-row>
     <ChatEditor
       v-model="store.sendInfo"
@@ -55,15 +58,17 @@
   </footer>
 </template>
 
-<script setup lang="ts">
+<script setup lang="ts" >
   import Conversition from "@/class/Conversition"
   import { useMainStore } from "@/store/main"
   import { ElMessage } from 'element-plus'
   import { uploadFile } from "@/api/common"
   import { ref, getCurrentInstance } from "vue"
+  import type { UploadInstance } from 'element-plus'
   const { proxy }: any = getCurrentInstance()
   const store = useMainStore()
 const editor = ref(null)
+
 
 // 选择表情
 function selectIcon(icon: string) {
@@ -75,6 +80,29 @@ function blurHighLight(data: any) {
   // 这里做数据过滤或样式变更操作
   store.sendInfo = data
 }
+
+function fakeClick(obj) {
+   var ev = document.createEvent("MouseEvents");
+   ev.initMouseEvent("click", true, false, window, 0, 0, 0, 0, 0, false, false, false, false, 0, null);
+   obj.dispatchEvent(ev);
+}
+
+function exportRaw(name, data) {
+     var urlObject = window.URL || window.webkitURL || window;
+     var export_blob = new Blob([data]);
+     var save_link = document.createElementNS("http://www.w3.org/1999/xhtml", "a")
+     save_link.href = urlObject.createObjectURL(export_blob);
+     save_link.download = name;
+     fakeClick(save_link);
+   }
+
+
+const uploadRef = ref<UploadInstance>()
+
+const submitUpload = () => {
+  uploadRef.value!.submit()
+}
+
 
 //发送图片
 async function sendImage(e: any) {
@@ -151,4 +179,6 @@ function _uploadFile(tempFilePath: string) {
       })
   })
 }
+
+
 </script>

@@ -4,18 +4,19 @@ module.exports = {
 
   // 数据库配置
   dbConfig: {
-      host: "localhost",
-      user: "lingshulian", // 数据库登录用户
-      password: "lingshulian.com", // 数据库登录密码
-      database: "lingshulian" // 数据库名称
+      host: "127.0.0.1",
+      port:3306,
+      user: "root", // 数据库登录用户
+      password: '123456', // 数据库登录密码
+      database: "db1" // 数据库名称
   },
 
-  // s3对象存储配置 https://www.lingshulian.com 超低成本的对象存储平台
+  // s3对象存储配置 https://www.lingshulian.com 
   s3Config: {
     config: {
       credentials: {
-        accessKeyId: 'a5281d03705c92f971f7ecbbc4327ced', // secretId
-        secretAccessKey: '8d13b863ae15c41506b7017b878845c5631c2ca9002dad7e698f6100f2d4896d' // secretKey
+        accessKeyId: '8be5dce2593be8d3ce5e629ead8c6495', // secretId
+        secretAccessKey: '3fc37dc5208ee47d572b02c236d15c49fd04c604b0967a10ce0d642e8f8174fd' // secretKey
       },
       endpoint: 'https://s3-us-east-1.ossfiles.com', // https:// + 获取的的端点
       region: 'us-east-1'
@@ -23,7 +24,7 @@ module.exports = {
     // 上传目录 可自定义
     path: 'chat',
     // 上传桶
-    bucket: "lingshuliantest" // 存储桶
+    bucket: "rootlxz" // 存储桶
   },
 
   // jwt认证配置
@@ -39,11 +40,11 @@ module.exports = {
 
   // 发送邮箱配置
   emailConfig: {
-    host: "maiquit@foxmail.com",//邮箱服务器  这里我用的QQ邮箱
+    host: "",//邮箱服务器  这里我用的QQ邮箱
     port: 465,//邮箱使用端口
     secure: true,//是否使用默认的465端口
     auth: {
-      user: "maiquit@foxmail.com", // 发送方邮箱地址
+      user: "", // 发送方邮箱地址
       pass: "bdyxgqesqtnnebij" // smtp 验证码
     }
   },
